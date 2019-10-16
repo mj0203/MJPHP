@@ -13,7 +13,6 @@ class FPDO {
 	/**
 	 * 获取单例实例
 	 *
-	 * @author xu.sun
 	 * @param string $connection        	
 	 * @return mixed
 	 */
@@ -47,7 +46,6 @@ class FPDO {
 	/**
 	 * 开启事务
 	 *
-	 * @author xu.sun
 	 * @return boolean
 	 */
 	function begin(){
@@ -56,7 +54,6 @@ class FPDO {
 	/**
 	 * 提交事务
 	 *
-	 * @author xu.sun
 	 * @return boolean
 	 */
 	function commit(){
@@ -65,7 +62,6 @@ class FPDO {
 	/**
 	 * 回滚事务
 	 *
-	 * @author xu.sun
 	 * @return boolean
 	 */
 	function rollback(){

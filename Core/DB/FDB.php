@@ -28,14 +28,12 @@ class FDB {
 	private static $enableSqlLog = false;
 	private static $sqlLogs = [];
 	/**
-	 * @author	xu.sun
 	 * @desc		开启sql log
 	 */
 	public static function enableSqlLog(){
 		self::$enableSqlLog = true;
 	}
 	/**
-	 * @author	xu.sun
 	 * @desc		获取sql log
 	 */
 	public static function getSqlLog(){
@@ -58,7 +56,6 @@ class FDB {
 		return true;
 	}
 	/**
-	 * @author	xu.sun
 	 * @desc		初始化配置
 	 * @param unknown $calledModelClass
 	 */
@@ -89,7 +86,6 @@ class FDB {
 		return $this;
 	}
 	/**
-	 * @author	xu.sun
 	 * @desc	查询字段
 	 * @param string $fields
 	 * @return \Core\DB\FDB
@@ -139,7 +135,6 @@ class FDB {
 		return $this;
 	}
 	/**
-	 * @author	xu.sun
 	 * @desc	sql条件
 	 */
 	public function where($p1, $p2='', $p3=''){
@@ -188,7 +183,6 @@ class FDB {
 		return $this;
 	}
 	/**
-	 * @author	xu.sun
 	 * @desc	插入数据
 	 * @alias	create save
 	 * @param array $data	可单条 可多条
@@ -242,7 +236,6 @@ class FDB {
 		return $fpdo->pdo->lastInsertId();
 	}
 	/**
-	 * @author	xu.sun
 	 * @desc	编辑数据
 	 * @alias	update
 	 * @param array $sets
@@ -276,7 +269,6 @@ class FDB {
 		return $std->rowCount();
 	}
 	/**
-	 * @author	xu.sun
 	 * @desc	获取一条数据
 	 * @alias	getOne
 	 * @param string $fields
@@ -301,7 +293,6 @@ class FDB {
 		return $std->fetch() ? : [];
 	}
 	/**
-	 * @author	xu.sun
 	 * @desc	统计数量
 	 * @param string $fields
 	 * @return mixed
@@ -321,7 +312,6 @@ class FDB {
 		return isset($res['count']) ? $res['count'] : 0;
 	}
 	/**
-	 * @author	xu.sun
 	 * @desc	获取所有数据
 	 * @param string $fields
 	 * @return array
@@ -347,7 +337,6 @@ class FDB {
 		return $std->fetchAll();
 	}
 	/**
-	 * @author	xu.sun
 	 * @desc	执行原始sql语句
 	 * @param string $sql	sql
 	 * @param array $bindParams	参数

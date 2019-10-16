@@ -21,7 +21,6 @@ if(!function_exists('config')){
 	}
 }
 /**
- * @author	xu.sun
  * @desc	配置文件读取
  * @example	env('config_key', 'default')
  */
@@ -51,7 +50,6 @@ if(!function_exists('env')){
 	}
 }
 /**
- * @author	xu.sun
  * @desc	load class common
  * @example	Lib_common_load('className', $p1, $p2, $p3)		//实例化最多允许传递三个参数
  */

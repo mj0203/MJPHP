@@ -15,7 +15,6 @@ class BaseController {
 	/**
 	 * 渲染view
 	 *
-	 * @author xu.sun
 	 * @param string $path        	
 	 * @param array $data        	
 	 */
@@ -61,7 +60,6 @@ class BaseController {
 	/**
 	 * 获取参数
 	 *
-	 * @author xu.sun
 	 * @param string $key        	
 	 * @param string $val        	
 	 * @return string
