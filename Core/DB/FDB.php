@@ -66,7 +66,7 @@ class FDB {
 		$this->model = $calledModelClass;
 		#table必须设置
 		if(!isset($calledModelClass::$table) || !$calledModelClass::$table){
-			throw new Fexception(Fmessage::FDB_TABLE_NAME_EMPTY);
+			throw new Fexception(Fmessage::DB_TABLE_NAME_EMPTY);
 		}
 		$this->table = $calledModelClass::$table;
 		if(isset($this->model::$connection)){
@@ -97,7 +97,7 @@ class FDB {
 	public function select(){
 		$args = func_get_args();
 		if(empty($args)){
-			throw new Fexception(Fmessage::FDB_PARAM_EMPTY);
+			throw new Fexception(Fmessage::DB_PARAM_EMPTY);
 		}
 			
 		$fields = [];
@@ -145,7 +145,7 @@ class FDB {
 	public function where($p1, $p2='', $p3=''){
 		$args_number = func_num_args();
 		if(empty($p1)){
-			throw new Fexception(Fmessage::FDB_PARAM_EMPTY);
+			throw new Fexception(Fmessage::DB_PARAM_EMPTY);
 		}
 		if( $args_number==1 && is_array($p1) ){
 			foreach ($p1 as $k => $v){
@@ -173,7 +173,7 @@ class FDB {
 			}
 			array_push($this->bindParams, $p3);
 		}else{
-			throw new Fexception(Fmessage::FDB_PARAM_ERROR);
+			throw new Fexception(Fmessage::DB_PARAM_ERROR);
 		}
 		return $this;
 	}
@@ -197,7 +197,7 @@ class FDB {
 	 */
 	public function insert($data){
 		if(empty($data)){
-			throw new Fexception(Fmessage::FDB_PARAM_EMPTY);
+			throw new Fexception(Fmessage::DB_PARAM_EMPTY);
 		}
 			
 		$first = current($data);
@@ -219,7 +219,7 @@ class FDB {
 			if($this->fillable){
 				$val = array_intersect_key($val, array_flip((array) $this->fillable));
 				if(empty($val)){
-					throw new Fexception(Fmessage::FDB_PARAMS_FILTERED_EMPTY);
+					throw new Fexception(Fmessage::DB_PARAMS_FILTERED_EMPTY);
 				}
 			}
 			if(!$this->insertFields){
@@ -250,7 +250,7 @@ class FDB {
 	 */
 	public function modify($sets, $bindParams=array()){
 		if(empty($sets)){
-			throw new Fexception(Fmessage::FDB_PARAM_EMPTY);
+			throw new Fexception(Fmessage::DB_PARAM_EMPTY);
 		}
 		if(is_array($sets)){
 			$bindParams = array_values($sets);

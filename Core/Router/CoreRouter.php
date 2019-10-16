@@ -3,7 +3,7 @@
 namespace Core\Router;
 
 class CoreRouter {
-	static public function parse() {
+	static public function parse(){
 		$params = array();
 		$isRewrite = env('REWRITE', false);
 		$reqUri = explode('?', self::realRoute());
@@ -33,7 +33,8 @@ class CoreRouter {
 		return true;
 	}
 	/**
-	 * @desc		短路由检测
+	 * 短路由检测
+	 * 
 	 * @return string
 	 */
 	static private function realRoute(){
@@ -48,6 +49,6 @@ class CoreRouter {
 			}
 			$_SERVER['REAL_REQUEST_URI'] = $realUriPath;
 		}
-		return $realUriPath ? : $_SERVER['REQUEST_URI'];
+		return $realUriPath ?: $_SERVER['REQUEST_URI'];
 	}
 }

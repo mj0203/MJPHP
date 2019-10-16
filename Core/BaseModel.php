@@ -3,7 +3,7 @@ namespace Core;
 use Core\DB\FDB;
 
 class BaseModel {
-	static public $timestamps = true;
+	public static $timestamps = true;
 	
 	public function __call($name, $arguments){
 		return self::start($name, $arguments);
@@ -12,7 +12,7 @@ class BaseModel {
 	static public function __callstatic($name, $arguments){
 		return self::start($name, $arguments);
 	}
-	static private function start($name=null, $arguments=null){
+	static private function start($name = null, $arguments = null){
 		$instance = new FDB();
 		$instance->initConfig(static::class);
 		
