@@ -49,38 +49,6 @@ if(!function_exists('env')){
 		return $tmp_config ? $tmp_config : ($default ? $default : '');
 	}
 }
-/**
- * @desc	load class common
- * @example	Lib_common_load('className', $p1, $p2, $p3)		//实例化最多允许传递三个参数
- */
-if ( ! function_exists('Lib_common_load'))
-{
-	function Lib_common_load($class){
-		if(!trim($class)) return false;
-
-		$libs_common_path = COMMON_PATH . DIRECTORY_SEPARATOR;
-		$file_name = $class . '.class.php';
-
-		if(is_file($libs_common_path . $file_name)){
-			include_once $libs_common_path . $file_name;
-				
-			if(class_exists($class)){
-				if(func_num_args()==1){
-					return new $class();
-				}elseif(func_num_args()==2){
-					return new $class( func_get_arg(1) );
-				}elseif(func_num_args()==3){
-					return new $class( func_get_arg(1), func_get_arg(2) );
-				}elseif(func_num_args()==4){
-					return new $class( func_get_arg(1), func_get_arg(2), func_get_arg(3) );
-				}
-			}else{
-				throw new Exception($class . ' class not exists!');
-			}
-		}
-		throw new Exception($file_name . ' file not exists!');
-	}
-}
 if(!function_exists('Lib_init_token')){
     function Lib_init_token($token=''){
         $token = trim($token) ? $token : strtoupper(md5(uniqid() . time()));

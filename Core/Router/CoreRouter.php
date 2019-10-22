@@ -4,11 +4,9 @@ namespace Core\Router;
 
 class CoreRouter {
 	static public function parse(){
-		$params = array();
-		$isRewrite = env('REWRITE', false);
 		$reqUri = explode('?', self::realRoute());
-		if($isRewrite){
-			$params = array_filter(explode('/', $reqUri[0]));
+		$params = array_filter(explode('/', $reqUri[0]));
+		if($params){
 			$m = current($params);
 			if($m && is_dir(CONTROLLER_PATH . DIRECTORY_SEPARATOR . ucfirst($m))){
 				array_shift($params);
