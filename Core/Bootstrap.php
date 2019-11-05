@@ -1,8 +1,14 @@
 <?php
-use Core\Router\CoreRouter;
+/**
+ * @author	MJ
+ * @desc		启动文件
+ */
+use Core\Router;
+use Core\Init;
 use Application\Librarys\Commons\Fexception;
 use Application\Librarys\Commons\Fmessage;
 use Application\Librarys\Commons\Logger;
+
 define('CORE_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'Core');
 define('CONFIG_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'Configs');
 define('APP_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'Application');
@@ -54,11 +60,13 @@ class Core_Bootstrap {
 	}
 	
 	static public function init(){
-		CoreRouter::parse();
+		Router::parse();
 		$module = ucfirst(self::getModule());
 		$controller = ucfirst(self::getController()) . 'Controller';
 		$action = self::getAction() . 'Action';
 		$namespace = 'Application\\Controllers\\' . ($module ? ($module . '\\' . $controller) : $controller);
+		
+		Init::start();
 		
 		if(class_exists($namespace)){
 			$class_obj = new $namespace();

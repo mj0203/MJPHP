@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Router;
+namespace Core;
 
-class CoreRouter {
+class Router {
 	static public function parse(){
 		$reqUri = explode('?', self::realRoute());
 		$params = array_filter(explode('/', $reqUri[0]));
