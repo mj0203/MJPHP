@@ -3,8 +3,8 @@
  * @author	MJ
  * @desc		启动文件
  */
-use Core\Router;
 use Core\Init;
+use Core\Router\Parse;
 use Application\Librarys\Commons\Fexception;
 use Application\Librarys\Commons\Fmessage;
 use Application\Librarys\Commons\Logger;
@@ -60,12 +60,15 @@ class Core_Bootstrap {
 	}
 	
 	static public function init(){
-		Router::parse();
+		//路由解析
+		Parse::start();
+		
 		$module = ucfirst(self::getModule());
 		$controller = ucfirst(self::getController()) . 'Controller';
 		$action = self::getAction() . 'Action';
 		$namespace = 'Application\\Controllers\\' . ($module ? ($module . '\\' . $controller) : $controller);
-		
+
+		//初始化前置任务
 		Init::start();
 		
 		if(class_exists($namespace)){
@@ -89,6 +92,7 @@ class Core_Bootstrap {
 		}
 	}
 	static public function run(){
+		//加载助手方法
 		self::loadHelps();
 		
 		$contentLength = isset($_SERVER['CONTENT_LENGTH']) ? $_SERVER['CONTENT_LENGTH'] : 0;

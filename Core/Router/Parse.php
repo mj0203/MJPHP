@@ -1,9 +1,9 @@
 <?php
 
-namespace Core;
+namespace Core\Router;
 
-class Router {
-	static public function parse(){
+class Parse {
+	static public function start(){
 		$reqUri = explode('?', self::realRoute());
 		$params = array_filter(explode('/', $reqUri[0]));
 		if($params){
@@ -32,14 +32,14 @@ class Router {
 	}
 	/**
 	 * 短路由检测
-	 * 
+	 *
 	 * @return string
 	 */
 	static private function realRoute(){
 		$realUriPath = '';
 		$reqURI = explode('?', $_SERVER['REQUEST_URI']);
 		$uriPath = array_shift($reqURI);
-		$routes = config('route');
+		$routes = require_once 'shorts.php';
 		if(isset($routes[$uriPath]) && $routes[$uriPath]){
 			$realUriPath = $routes[$uriPath];
 			if($reqURI){

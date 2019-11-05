@@ -1,6 +1,6 @@
 <?php
 /**
- * @desc		短url定义
+ * @desc		短urls定义
  */
 return [
 	'/index.html'			=> '/index/index'
