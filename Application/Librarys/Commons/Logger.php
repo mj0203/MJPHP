@@ -16,7 +16,7 @@ class Logger {
 	static private function openFile(){
 		if( is_null(self::$resource) ){
 			$logs = env('LOGS');
-			if(!isset($logs['path'])){
+			if(!isset($logs['path']) || empty($log['path'])){
 				self::$logPath = ROOT_PATH . DIRECTORY_SEPARATOR . 'logs';
 			}
 			if(!is_dir(self::$logPath) && !mkdir(self::$logPath, 0755, true)){
