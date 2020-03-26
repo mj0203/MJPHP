@@ -29,8 +29,6 @@ class Core_Bootstrap {
 	private static $Module = '';
 	private static $Controller = 'index';
 	private static $Action = 'index';
-	private static $UiDebug = true;
-	
 	private static $UriParams = [];
 	
 	static public function setUriParams($params){
@@ -116,20 +114,11 @@ class Core_Bootstrap {
 	
 	static public function loadClassLoader($class_name){
 		$class_name = trim($class_name);
-		if(!$class_name){
-			throw new Fexception(Fmessage::CORE_CLASS_IS_EMPTY);
-		}
-		
 		$file = ROOT_PATH . DIRECTORY_SEPARATOR . str_replace(' ', DIRECTORY_SEPARATOR, ucwords(str_replace('\\', ' ', $class_name))) . '.php';
-		
 		if(is_file($file)){
 			include_once $file;
 		}else{
-			if(self::$UiDebug === true){
-				die("<p><span style='font-weight:bold;'>file: </span><span style='font-weight:bold;color:#DDD'>$file</span> is not found!</p>");
-			}else{
-				throw new Fexception(Fmessage::CORE_CLASS_FILE_NOT_EXIST);
-			}
+			throw new Fexception(Fmessage::CORE_CLASS_FILE_NOT_EXIST, ['class' => $class_name]);
 		}
 	}
 }
